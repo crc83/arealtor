@@ -24,6 +24,7 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'rspec-rails'
   gem 'rspec'
+  gem 'minitest'
 end
 
 gem 'jquery-rails'
