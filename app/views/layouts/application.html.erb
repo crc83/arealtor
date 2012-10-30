@@ -10,20 +10,20 @@
   <![endif]-->
 </head>
 <body>
-<header class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "a-realtor", "#", id: "logo" %>
+    <div class="container-fluid">
+      <%= link_to "a-realtor", "#", id: "logo", class: "brand" %>
       <nav>
         <ul class="nav pull-right">
-          <il><%= link_to "Home", "#" %></il>
-          <il><%= link_to "Help", "#" %></il>
-          <il><%= link_to "Sigh in", "#" %></il>
+          <li><%= link_to "Home", "#", class: "navbar-link" %></li>
+          <li><%= link_to "Help", "#", class: "navbar-link" %></li>
+          <li><%= link_to "Sigh in", "#", class: "navbar-link" %></li>
         </ul>
       </nav>
     </div>
   </div>
-</header>
+</div>
 <div class="container">
   <h1><%= yield(:title) %></h1>
   <%= yield %>
