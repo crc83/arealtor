@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1><%= yield(:title) %></h1>
-<%= yield %>
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <nav>
+        <ul class="nav pull-right">
+          <il><%= link_to "Home", "#" %></il>
+          <il><%= link_to "Help", "#" %></il>
+          <il><%= link_to "Sigh in", "#" %></il>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <h1><%= yield(:title) %></h1>
+  <%= yield %>
+</div>
 
 </body>
 </html>
