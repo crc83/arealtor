@@ -17,6 +17,8 @@ ARealtor::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
+  match '/signup', to: 'users#new'
+
   match '/help',  to: 'static_pages#help'
   match '/about',  to: 'static_pages#about'
   match '/contact',  to: 'static_pages#contact'
