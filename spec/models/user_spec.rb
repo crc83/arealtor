@@ -14,6 +14,7 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:authentificate) }
 
   it { should be_valid }
 
@@ -57,7 +58,6 @@ describe User do
       user_with_same_email = @user.dup
       user_with_same_email.save
     end
-
     it { should_not be_valid }
   end
 
@@ -86,4 +86,19 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe "return value of authentificate method" do
+    before {@user.save }
+    let(:found_user) { User.find_by_email(@user.email) }
+
+    describe "with valid password" do
+      it { should == found_user.authentificate(@user.password) }
+    end
+
+    describe "with invalid password" do
+      let(:user_for_invalid_password) { found_user.authentificate("invalid password") }
+
+      it { should_not == user_for_invalid_password }
+      specify {user_for_invalid_password.should be_false }
+    end
+  end
 end
