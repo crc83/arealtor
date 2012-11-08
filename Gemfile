@@ -28,6 +28,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'minitest'
+  gem 'factory_girl_rails','4.1.0'
 end
 
 gem 'jquery-rails'

@@ -1,6 +1,13 @@
 @import "bootstrap";
 
 /* universal */
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 html {
   overflow-y: scroll;
@@ -16,6 +23,10 @@ section {
 
 textarea {
   resize: vertical;
+}
+
+.container {
+  padding-top: 30px;
 }
 
 .center {
@@ -79,4 +90,11 @@ footer ul li {
   margin-left: 10px;
 }
 
-
+/* misc */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
