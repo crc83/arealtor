@@ -1,6 +1,15 @@
 <footer class="footer">
   <small>
-    <a href="http://railstutorial.org/">Rails tutorial</a>
+<%=
+    require "open-uri"
+
+    url = "http://api.icndb.com/jokes/random"
+    joke = open(url).read()
+
+    require 'json'
+    hash = JSON.parse joke
+    joke_string = hash['value']['joke']
+%>
   </small>
 <nav>
   <ul>
