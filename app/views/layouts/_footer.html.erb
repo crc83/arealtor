@@ -7,8 +7,12 @@
     joke = open(url).read()
 
     require 'json'
-    hash = JSON.parse joke
-    joke_string = hash['value']['joke']
+    begin
+      hash = JSON.parse joke
+      joke_string = hash['value']['joke']
+    rescue
+      joke_string='-----------------------';
+    end
 %>
   </small>
 <nav>
