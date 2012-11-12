@@ -14,12 +14,17 @@ describe "ICNDB database" do
 
   it "should return empty message if it receives invalid JSON message" do   
     wrong_json_file = mock('file')
-    wrong_json_file.should_receive(:read).and_return('wrong JSON') 
-
+    wrong_json_file.should_receive(:read).and_return('wrong JSON')
     should_receive(:open).and_return(wrong_json_file)
-    
     icndb_joke.should be_empty
   end
 
-  '{ "type": "success", "value": { "id": 339, "joke": "text of joke", "categories": ["explicit", "chuck norris"] } }'
+  it "should return text of joke if it receives valid JSON message" do   
+    valid_json_file = mock('file')
+    valid_json_file.should_receive(:read).and_return('{ "type": "success", "value": { "id": 339, "joke": "text of joke", "categories": ["explicit", "chuck norris"] } }') 
+    should_receive(:open).and_return(valid_json_file)
+    icndb_joke.should == "text of joke"
+  end
+
+  
 end
