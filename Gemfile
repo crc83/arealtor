@@ -26,6 +26,8 @@ end
 group :test do
   gem 'capybara', '1.1.2'
   gem 'rspec-rails'
+#  gem 'rspec-http', '0.10.0'
+#  gem 'mocha'
   gem 'rspec'
   gem 'minitest'
   gem 'factory_girl_rails','4.1.0'
