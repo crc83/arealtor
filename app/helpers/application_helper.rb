@@ -18,7 +18,7 @@ module ApplicationHelper
     url = "http://api.icndb.com/jokes/random"
     begin
       joke = open(url).read()
-    
+      puts joke
       hash = JSON.parse joke
       joke_string = hash['value']['joke']
     rescue
