@@ -18,6 +18,8 @@ ARealtor::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
 
   match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/help',  to: 'static_pages#help'
   match '/about',  to: 'static_pages#about'
