@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'rspec'
 require 'socket'
 require 'uri'
-require File.dirname(__FILE__)+'/../../app/helpers/application_helper.rb'
 
 describe "ICNDB database" do
   include ApplicationHelper
