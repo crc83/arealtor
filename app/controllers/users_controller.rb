@@ -14,8 +14,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Welcome to highliter"
-      redirect_to @user
+      redirect_back_or user
     else
+      flash[:error] = "Invalid email/password combination"
       render 'new'
     end
   end
@@ -37,7 +38,10 @@ class UsersController < ApplicationController
   private
     
     def signed_in_user
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+       end 
     end
     
     def correct_user
