@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
 
   def show
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Welcome to highliter"
-      redirect_back_or user
+      redirect_to @user
     else
       flash[:error] = "Invalid email/password combination"
       render 'new'
@@ -35,6 +35,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all
+  end
   private
     
     def signed_in_user
