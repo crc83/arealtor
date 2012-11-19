@@ -38,6 +38,13 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate(page: params[:page])
   end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    redirect_to users_url
+  end
+  
   private
     
     def signed_in_user
