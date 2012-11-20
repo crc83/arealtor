@@ -21,13 +21,35 @@ describe "UserPages" do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Confirm Password", with: "foobar"
       end
 
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
     end
+  end
+  
+  describe "signed in user" do
+      let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user }
+
+      it "can't visit signup page" do
+        visit signup_path
+        current_path.should == root_path
+      end
+      
+      it "can't visit new_user page" do
+        visit new_user_path
+        current_path.should == root_path
+      end
+      
+#      it "can't visit create_user page" do
+#        visit users_path
+#        post users_path, user
+#        current_path.should == root_path
+#      end
+      
   end
 
   describe "profile page" do

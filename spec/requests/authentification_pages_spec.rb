@@ -9,13 +9,20 @@ describe "Authentification" do
 
     it { should have_selector('h1', text: 'Sign in') }
 
+
+    describe "non signed in user" do
+
+      it { should_not have_link('Profile') }
+      it { should_not have_link('Users') }
+      it { should_not have_link('Settings') }
+      it { should_not have_link('Sign out') }
+      
+      it { should have_link('Sign in', href: signin_path) }
+    end
+
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before do
-        fill_in "Email",    with: user.email
-        fill_in "Password", with: user.password
-        click_button "Sign in"
-      end
+      before { sign_in user }
 
       it { should have_selector('title', text: user.name) }
       it { should have_link('Profile', href: user_path(user)) }
@@ -89,10 +96,8 @@ describe "Authentification" do
     describe "when attempting to visit a protected page" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        visit edit_user_path(user)
-        fill_in "Email",    with: user.email
-        fill_in "Password", with: user.password
-        click_button "Sign in"
+        visit edit_user_path(user) 
+        sign_in user 
       end
       
       describe "after signing in" do

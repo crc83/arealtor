@@ -124,4 +124,17 @@ describe User do
     it { should be_admin }
   end
   
+  describe "when admin flag defined in hash" do
+    it "shouldn't be accessable from hash" do
+      expect do
+         User.new(name: "Example User", 
+                            email: "user@example.com", 
+                            password: "foobar", 
+                            password_confirmation: "foobar",
+                            admin: true) 
+      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
+  
+  
 end
