@@ -10,7 +10,7 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :user_id
+  attr_accessible :content
   validates :content, :presence => true, :length => {:maximum => 40}
   belongs_to :user
 end
