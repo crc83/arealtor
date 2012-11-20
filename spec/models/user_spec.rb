@@ -135,4 +135,6 @@ describe User do
       end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end
   end
+  
+  
 end
