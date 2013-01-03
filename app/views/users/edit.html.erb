@@ -1,6 +1,16 @@
-<h1>Editing user</h1>
+<% provide(:title, "Edit user") %> 
+<h1>Update your profile</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'fields', f: f %>
+      <br>
+      <%= gavatar_for @user %><a href="http://gravatar.com/emails"  target="_blank">change</a>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+      <br>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
