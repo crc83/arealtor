@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bcrypt-ruby','3.0.1'
 
@@ -8,8 +8,8 @@ gem 'annotate', group: :development
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+gem 'jdbc-sqlite3'
+gem 'activerecord-jdbcsqlite3-adapter', :require => 'jdbc-sqlite3', :require => 'arjdbc'
 
 # Gems used only for assets and not required
 # in production environments by default.
